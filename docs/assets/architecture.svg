@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">TempoRAG-Fin architecture</title>
+  <desc id="desc">Architecture diagram for TempoRAG-Fin, showing ECT-QA ingestion, FinFact extraction, Neo4j Fin* graph construction, temporal retrieval, PPR reranking, LLM answer generation, and evaluation.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f7fbff"/>
+      <stop offset="52%" stop-color="#f5f2ea"/>
+      <stop offset="100%" stop-color="#eef8f2"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1b4d89"/>
+      <stop offset="100%" stop-color="#2f80c4"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f766e"/>
+      <stop offset="100%" stop-color="#25a18e"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#a16207"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="ink" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#172033"/>
+      <stop offset="100%" stop-color="#34435e"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#12213a" flood-opacity="0.14"/>
+    </filter>
+    <marker id="arrowBlue" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#2f80c4"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#25a18e"/>
+    </marker>
+    <marker id="arrowGold" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#d97706"/>
+    </marker>
+    <style>
+      .font { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; }
+      .title { font-size: 34px; font-weight: 800; fill: #172033; letter-spacing: -0.02em; }
+      .subtitle { font-size: 15px; fill: #56627a; }
+      .lane-title { font-size: 15px; font-weight: 800; fill: #ffffff; letter-spacing: 0.04em; text-transform: uppercase; }
+      .card-title { font-size: 18px; font-weight: 800; fill: #172033; }
+      .card-text { font-size: 13px; fill: #536079; }
+      .small { font-size: 12px; fill: #657188; }
+      .metric { font-size: 22px; font-weight: 800; fill: #172033; }
+      .metric-label { font-size: 12px; fill: #657188; }
+      .chip { font-size: 12px; font-weight: 700; fill: #ffffff; }
+      .line-blue { stroke: #2f80c4; stroke-width: 3.2; fill: none; marker-end: url(#arrowBlue); }
+      .line-green { stroke: #25a18e; stroke-width: 3.2; fill: none; marker-end: url(#arrowGreen); }
+      .line-gold { stroke: #d97706; stroke-width: 3.2; fill: none; marker-end: url(#arrowGold); }
+      .soft-line { stroke: #c8d3e3; stroke-width: 1.4; fill: none; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="760" rx="34" fill="url(#bg)"/>
+  <circle cx="116" cy="104" r="74" fill="#d9ecff" opacity="0.72"/>
+  <circle cx="1062" cy="114" r="96" fill="#d9f3e7" opacity="0.78"/>
+  <circle cx="1010" cy="660" r="130" fill="#fde9c5" opacity="0.62"/>
+
+  <text class="font title" x="56" y="68">TempoRAG-Fin</text>
+  <text class="font subtitle" x="56" y="96">Time-aware financial GraphRAG for earnings-call QA, temporal evidence retrieval, and reproducible evaluation.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="54" y="132" width="328" height="54" rx="18" fill="url(#blue)"/>
+    <text class="font lane-title" x="80" y="166">Offline Graph Build</text>
+
+    <rect x="54" y="210" width="328" height="96" rx="20" fill="#ffffff"/>
+    <text class="font card-title" x="78" y="244">ECT-QA Corpus</text>
+    <text class="font card-text" x="78" y="270">Earnings-call transcripts</text>
+    <text class="font small" x="78" y="290">ectqa_corpus.py</text>
+
+    <rect x="54" y="346" width="328" height="106" rx="20" fill="#ffffff"/>
+    <text class="font card-title" x="78" y="380">Typed Metric Extraction</text>
+    <text class="font card-text" x="78" y="406">revenue, EPS, FCF, margin, cash</text>
+    <text class="font small" x="78" y="426">metric_extractors.py -&gt; MetricFact</text>
+
+    <rect x="54" y="492" width="328" height="116" rx="20" fill="#ffffff"/>
+    <text class="font card-title" x="78" y="526">Fin* Neo4j Graph</text>
+    <text class="font card-text" x="78" y="552">FinCompany, FinChunk, FinFact</text>
+    <text class="font card-text" x="78" y="574">FinYear, FinQuarter</text>
+    <text class="font small" x="78" y="594">build_financial_graph.py</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="436" y="132" width="328" height="54" rx="18" fill="url(#green)"/>
+    <text class="font lane-title" x="462" y="166">Online Retrieval And Answering</text>
+
+    <rect x="436" y="210" width="328" height="96" rx="20" fill="#ffffff"/>
+    <text class="font card-title" x="460" y="244">User Question</text>
+    <text class="font card-text" x="460" y="270">company, metric, year, quarter intent</text>
+    <text class="font small" x="460" y="290">analyze_query(...) metadata</text>
+
+    <rect x="436" y="346" width="328" height="106" rx="20" fill="#ffffff"/>
+    <text class="font card-title" x="460" y="380">Temporal Candidate Scope</text>
+    <text class="font card-text" x="460" y="406">company + period -&gt; relaxed fallback</text>
+    <text class="font small" x="460" y="426">FinancialGraphRetriever.search</text>
+
+    <rect x="436" y="492" width="328" height="116" rx="20" fill="#ffffff"/>
+    <text class="font card-title" x="460" y="526">TF-IDF + PPR Rerank</text>
+    <text class="font card-text" x="460" y="552">seed facts by query metric and qualifier</text>
+    <text class="font card-text" x="460" y="574">score = tfidf + 0.5 * ppr</text>
+    <text class="font small" x="460" y="594">temporal_graph_search.py</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="818" y="132" width="328" height="54" rx="18" fill="url(#gold)"/>
+    <text class="font lane-title" x="844" y="166">Evidence, Generation, Evaluation</text>
+
+    <rect x="818" y="210" width="328" height="96" rx="20" fill="#ffffff"/>
+    <text class="font card-title" x="842" y="244">Evidence Table</text>
+    <text class="font card-text" x="842" y="270">level / delta aware evidence cards</text>
+    <text class="font small" x="842" y="290">evidence_table.py</text>
+
+    <rect x="818" y="346" width="328" height="106" rx="20" fill="#ffffff"/>
+    <text class="font card-title" x="842" y="380">LLM Answer</text>
+    <text class="font card-text" x="842" y="406">chunk citations and numeric context</text>
+    <text class="font small" x="842" y="426">TemporalEvidenceAgent</text>
+
+    <rect x="818" y="492" width="328" height="116" rx="20" fill="#ffffff"/>
+    <text class="font card-title" x="842" y="526">Evaluation Harness</text>
+    <text class="font card-text" x="842" y="552">ECT-QA metrics + gpt-4.1-mini judge</text>
+    <text class="font card-text" x="842" y="574">ablation + incremental protocol</text>
+    <text class="font small" x="842" y="594">scripts/ectqa_*.py</text>
+  </g>
+
+  <path class="line-blue" d="M 218 306 L 218 338"/>
+  <path class="line-blue" d="M 218 452 L 218 484"/>
+  <path class="line-green" d="M 382 550 C 406 550 410 550 428 550"/>
+  <path class="line-green" d="M 600 306 L 600 338"/>
+  <path class="line-green" d="M 600 452 L 600 484"/>
+  <path class="line-gold" d="M 764 550 C 790 550 792 258 810 258"/>
+  <path class="line-gold" d="M 982 306 L 982 338"/>
+  <path class="line-gold" d="M 982 452 L 982 484"/>
+
+  <g filter="url(#shadow)">
+    <rect x="72" y="652" width="300" height="64" rx="18" fill="#ffffff"/>
+    <text class="font metric" x="96" y="686">0.016 -&gt; 0.421</text>
+    <text class="font metric-label" x="96" y="706">answer_correctness vs original baseline</text>
+
+    <rect x="450" y="652" width="300" height="64" rx="18" fill="#ffffff"/>
+    <text class="font metric" x="474" y="686">0.178 -&gt; 0.921</text>
+    <text class="font metric-label" x="474" y="706">temporal_alignment vs original baseline</text>
+
+    <rect x="828" y="652" width="300" height="64" rx="18" fill="#ffffff"/>
+    <text class="font metric" x="852" y="686">+0.092</text>
+    <text class="font metric-label" x="852" y="706">graph vs TF-IDF answer_correctness</text>
+  </g>
+
+  <g>
+    <rect x="914" y="48" width="74" height="26" rx="13" fill="#1b4d89"/>
+    <text class="font chip" x="934" y="66">Fin*</text>
+    <rect x="998" y="48" width="74" height="26" rx="13" fill="#0f766e"/>
+    <text class="font chip" x="1016" y="66">PPR</text>
+    <rect x="1082" y="48" width="74" height="26" rx="13" fill="#a16207"/>
+    <text class="font chip" x="1096" y="66">Judge</text>
+  </g>
+</svg>

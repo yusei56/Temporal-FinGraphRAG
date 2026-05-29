@@ -13,6 +13,8 @@ metric-aware evidence retrieval, graph reranking, and reproducible evaluation.
 > project reports are the added contribution; the original generic GraphRAG
 > product surfaces were removed to keep the portfolio project focused.
 
+![TempoRAG-Fin architecture](docs/assets/architecture.svg)
+
 ## What This Adds
 
 - Financial temporal graph schema for companies, fiscal periods, metrics,

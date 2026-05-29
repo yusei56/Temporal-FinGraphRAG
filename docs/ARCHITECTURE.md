@@ -6,6 +6,8 @@ evaluation scripts. The original generic GraphRAG agents, API server, and
 frontend were removed from this copy. Curated evaluation summaries and headline
 artifacts remain in `docs/`; ad-hoc run outputs should be written to `outputs/`.
 
+![TempoRAG-Fin architecture](assets/architecture.svg)
+
 ## Repository Scope
 
 | Area | TempoRAG-Fin implementation |
