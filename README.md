@@ -1,5 +1,7 @@
 # TempoRAG-Fin
 
+[中文说明](README.zh-CN.md)
+
 TempoRAG-Fin is a time-aware financial GraphRAG prototype for ECT-QA
 earnings-call question answering. It focuses on temporal financial facts,
 metric-aware evidence retrieval, graph reranking, and reproducible evaluation.

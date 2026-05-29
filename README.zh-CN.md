@@ -1,0 +1,154 @@
+# Temporal-FinGraphRAG
+
+Temporal-FinGraphRAG 是一个面向金融财报问答的时序 GraphRAG 项目。项目基于 ECT-QA 财报电话会语料，围绕“公司、财季、指标、数值、证据片段”构建金融时序图谱，并通过时间过滤、指标识别、图扩散重排和 LLM Judge 评估来提升金融问答的证据可靠性。
+
+> 本项目基于开源项目 [graph-rag-agent](https://github.com/1517005260/graph-rag-agent) 二次开发，原项目采用 MIT License，Copyright 2025 GLK。本仓库保留上游 License 与 NOTICE，并聚焦展示新增的金融时序 RAG、ECT-QA 评估与实验报告部分。
+
+## 项目背景
+
+普通 RAG 在金融问答中容易遇到三个问题：
+
+- 同一家公司、同一指标会在不同年份和财季反复出现，检索结果容易混淆时间范围。
+- 财报问题往往要求精确数值和指标类型，例如 revenue、EPS、free cash flow、gross margin。
+- 单纯依赖文本相似度时，召回到的文档可能相关，但证据顺序和答案依据不够稳定。
+
+Temporal-FinGraphRAG 的目标是把金融问答从“相似文本检索”升级为“时间约束 + 指标约束 + 图谱证据重排”的检索生成流程。
+
+## 核心能力
+
+- 构建金融时序图谱：将公司、财季、财务指标、证据 chunk 和 FinFact 事实节点组织成 Neo4j 图结构。
+- 识别金融指标事实：抽取 revenue、EPS、free cash flow、cash and investments、gross margin 等指标及其数值类型。
+- 时间感知检索：区分同一公司在不同 year/quarter 下的事实，减少跨期证据污染。
+- PPR 图扩散重排：在 FinFact-FinChunk 图上执行 Personalized PageRank，并与词法检索结果融合。
+- 完整评估闭环：包含 ECT-QA 规则评估、检索指标、LLM Judge、消融实验和增量评估协议。
+
+## 主要结果
+
+在 ECT-QA `new` / `answerable` / `limit=100` 上，Temporal-FinGraphRAG 相比原始 `graph-rag-agent` baseline 的 full LLM Judge 结果如下：
+
+| 指标 | 原始 baseline 最优值 | Temporal-FinGraphRAG | 提升 |
+| --- | ---: | ---: | ---: |
+| judge correct_like | 0.010 | 0.220 | +0.210 |
+| answer_correctness | 0.016 | 0.421 | +0.405 |
+| evidence_faithfulness | 0.045 | 0.539 | +0.494 |
+| temporal_alignment | 0.178 | 0.921 | +0.743 |
+| numerical_reasoning | 0.014 | 0.390 | +0.376 |
+
+在改造后的系统内部，Graph retriever 相比 TF-IDF retriever 的核心结果如下：
+
+| 指标 | TF-IDF | Graph | 提升 | 95% CI |
+| --- | ---: | ---: | ---: | --- |
+| answer_correctness | 0.329 | 0.421 | +0.092 | [+0.014, +0.168] |
+| numerical_reasoning | 0.307 | 0.390 | +0.083 | [+0.011, +0.158] |
+| answer_completeness | 0.400 | 0.482 | +0.083 | [+0.007, +0.161] |
+| doc_recall@8 | 0.896 | 0.857 | -0.039 | [-0.080, -0.008] |
+
+结果说明：图检索牺牲了一部分宽泛文档召回，但改善了指标和时间范围相关证据的排序，从而提升答案正确性、数值推理和完整性。
+
+## 贡献范围
+
+| 模块 | 路径 | 说明 |
+| --- | --- | --- |
+| 金融时序 RAG 核心 | `graphrag_agent/financial/` | FinFact 抽取、财季解析、时间检索、图重排、答案生成。 |
+| 图谱构建 | `graphrag_agent/integrations/build/build_financial_graph.py` | 构建金融时序 Neo4j 图谱。 |
+| 评估脚本 | `scripts/ectqa_*.py` | ECT-QA 评估、LLM Judge、消融实验、增量评估。 |
+| 单元测试 | `test/test_metric_extractors.py` | 金融指标抽取的确定性测试。 |
+| 文档与实验记录 | `docs/` | 架构、结果、开发日志、case study 和关键实验产物。 |
+
+## 快速开始
+
+创建环境并安装依赖：
+
+```bash
+conda create -n temporag-fin python==3.10
+conda activate temporag-fin
+pip install -r requirements.txt
+pip install -e .
+```
+
+启动 Neo4j：
+
+```bash
+docker compose up -d
+```
+
+配置环境变量：
+
+```bash
+cp .env.example .env
+```
+
+然后在 `.env` 中填写：
+
+```bash
+OPENAI_API_KEY=your_api_key_here
+OPENAI_BASE_URL=https://api.openai.com/v1
+```
+
+如果使用中转 API，将 `OPENAI_BASE_URL` 改成对应地址即可。
+
+## 构建金融时序图谱
+
+```bash
+PYTHONPATH=. python graphrag_agent/integrations/build/build_financial_graph.py \
+  --scenario new \
+  --corpus-scope full \
+  --wipe
+```
+
+## 运行小规模评估
+
+```bash
+PYTHONPATH=. python scripts/ectqa_eval.py \
+  --scenario new \
+  --answer-filter answerable \
+  --limit 5 \
+  --agents TemporalEvidenceAgent \
+  --metadata-filter boost \
+  --retriever graph \
+  --output-json docs/smoke_graph.json \
+  --quiet
+```
+
+## 运行 LLM Judge
+
+```bash
+PYTHONPATH=. python scripts/ectqa_llm_judge.py \
+  --input-json docs/smoke_graph.json \
+  --judge-profile full \
+  --judge-model gpt-4.1-mini
+```
+
+## 运行测试
+
+```bash
+PYTHONPATH=. python test/test_metric_extractors.py
+```
+
+## 重要文档
+
+| 文档 | 内容 |
+| --- | --- |
+| `docs/ARCHITECTURE.md` | 系统架构、图谱 schema、数据流和运行命令。 |
+| `docs/RESULTS.md` | 主实验结果、消融实验、增量评估和 caveats。 |
+| `docs/dev_log.md` | 阶段性开发日志和实验追踪。 |
+| `docs/formal_eval_report_20260525.md` | 正式评估报告。 |
+| `NOTICE` | 上游项目来源和许可证说明。 |
+
+## 评估产物说明
+
+仓库中保留了压缩后的核心报告和关键结果文件。大规模过程性 JSON、临时 smoke 输出、完整 LLM Judge backfill 等文件没有放入 GitHub，相关数字已经固化在 `docs/RESULTS.md` 和 `docs/dev_log.md` 中。
+
+当前保留的 headline artifact 位于：
+
+```text
+docs/regression_wp3_limit100_20260526/
+```
+
+## 当前状态
+
+这是一个研究与评估导向的金融时序 GraphRAG 项目。为了突出核心贡献，仓库已经移除了原项目中的通用 Agent、FastAPI、Streamlit 前端、学校 demo 数据和本地虚拟环境，只保留金融时序 RAG 主线、评估脚本、关键结果和文档。
+
+## License
+
+本项目保留上游 MIT License。详细归属说明见 `LICENSE` 和 `NOTICE`。
