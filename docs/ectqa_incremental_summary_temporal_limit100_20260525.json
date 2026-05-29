@@ -1,0 +1,198 @@
+{
+  "started_at": "2026-05-25T18:54:36",
+  "protocol": [
+    {
+      "name": "base_old_questions_old_corpus",
+      "scenario": "base",
+      "description": "Old questions over old corpus; measures original/base ability."
+    },
+    {
+      "name": "retention_old_questions_updated_corpus",
+      "scenario": "updated",
+      "description": "Old questions over old+new corpus; measures stability after corpus update."
+    },
+    {
+      "name": "new_questions_updated_corpus",
+      "scenario": "new",
+      "description": "New questions over old+new corpus; measures acquisition of new information."
+    }
+  ],
+  "config": {
+    "limit": 100,
+    "offset": 0,
+    "answer_filter": "answerable",
+    "agents": [
+      "TemporalEvidenceAgent"
+    ],
+    "corpus_scope": "full",
+    "metadata_filter": "boost",
+    "temporal_pseudo_questions": 0
+  },
+  "runs": {
+    "base_old_questions_old_corpus": {
+      "dataset": {
+        "questions_loaded": 656,
+        "questions_selected": 100,
+        "documents_loaded": 384,
+        "chunks_indexed": 14047
+      },
+      "agents": {
+        "TemporalEvidenceAgent": {
+          "em": 0.0,
+          "f1": 0.1903811959873448,
+          "precision": 0.1282870276156972,
+          "recall": 0.5273480590967433,
+          "rouge_l": 0.16132538686341172,
+          "buckets": {
+            "incorrect": 80,
+            "wrong_refusal": 11,
+            "correct": 9
+          },
+          "correct_like_rate": 0.09,
+          "doc_recall_at_k": 0.8993333333333333,
+          "evidence_text_recall_at_k": 0.47861904761904744,
+          "all_support_recall_at_k": 0.77,
+          "temporal_coverage_at_k": 0.9010000000000001,
+          "citation_support_rate": 0.9245,
+          "num_examples": 100,
+          "num_errors": 0
+        }
+      },
+      "overall": {
+        "em": 0.0,
+        "f1": 0.1903811959873448,
+        "precision": 0.1282870276156972,
+        "recall": 0.5273480590967433,
+        "rouge_l": 0.16132538686341172,
+        "buckets": {
+          "incorrect": 80,
+          "wrong_refusal": 11,
+          "correct": 9
+        },
+        "correct_like_rate": 0.09,
+        "doc_recall_at_k": 0.8993333333333333,
+        "evidence_text_recall_at_k": 0.47861904761904744,
+        "all_support_recall_at_k": 0.77,
+        "temporal_coverage_at_k": 0.9010000000000001,
+        "citation_support_rate": 0.9245,
+        "num_examples": 100,
+        "num_errors": 0
+      }
+    },
+    "retention_old_questions_updated_corpus": {
+      "dataset": {
+        "questions_loaded": 656,
+        "questions_selected": 100,
+        "documents_loaded": 480,
+        "chunks_indexed": 17437
+      },
+      "agents": {
+        "TemporalEvidenceAgent": {
+          "em": 0.0,
+          "f1": 0.1915245141392984,
+          "precision": 0.1278898357962888,
+          "recall": 0.5325449827882871,
+          "rouge_l": 0.16270668416663828,
+          "buckets": {
+            "incorrect": 82,
+            "correct": 8,
+            "wrong_refusal": 10
+          },
+          "correct_like_rate": 0.08,
+          "doc_recall_at_k": 0.8993333333333333,
+          "evidence_text_recall_at_k": 0.4769523809523809,
+          "all_support_recall_at_k": 0.77,
+          "temporal_coverage_at_k": 0.9010000000000001,
+          "citation_support_rate": 0.9245,
+          "num_examples": 100,
+          "num_errors": 0
+        }
+      },
+      "overall": {
+        "em": 0.0,
+        "f1": 0.1915245141392984,
+        "precision": 0.1278898357962888,
+        "recall": 0.5325449827882871,
+        "rouge_l": 0.16270668416663828,
+        "buckets": {
+          "incorrect": 82,
+          "correct": 8,
+          "wrong_refusal": 10
+        },
+        "correct_like_rate": 0.08,
+        "doc_recall_at_k": 0.8993333333333333,
+        "evidence_text_recall_at_k": 0.4769523809523809,
+        "all_support_recall_at_k": 0.77,
+        "temporal_coverage_at_k": 0.9010000000000001,
+        "citation_support_rate": 0.9245,
+        "num_examples": 100,
+        "num_errors": 0
+      }
+    },
+    "new_questions_updated_corpus": {
+      "dataset": {
+        "questions_loaded": 349,
+        "questions_selected": 100,
+        "documents_loaded": 480,
+        "chunks_indexed": 17437
+      },
+      "agents": {
+        "TemporalEvidenceAgent": {
+          "em": 0.0,
+          "f1": 0.16632454490314827,
+          "precision": 0.11027688212554212,
+          "recall": 0.5521863065628098,
+          "rouge_l": 0.14399085672047987,
+          "buckets": {
+            "correct": 23,
+            "incorrect": 58,
+            "wrong_refusal": 19
+          },
+          "correct_like_rate": 0.23,
+          "doc_recall_at_k": 0.8962499999999999,
+          "evidence_text_recall_at_k": 0.43079761904761904,
+          "all_support_recall_at_k": 0.79,
+          "temporal_coverage_at_k": 0.8890833333333332,
+          "citation_support_rate": 0.9541666666666666,
+          "num_examples": 100,
+          "num_errors": 0
+        }
+      },
+      "overall": {
+        "em": 0.0,
+        "f1": 0.16632454490314827,
+        "precision": 0.11027688212554212,
+        "recall": 0.5521863065628098,
+        "rouge_l": 0.14399085672047987,
+        "buckets": {
+          "correct": 23,
+          "incorrect": 58,
+          "wrong_refusal": 19
+        },
+        "correct_like_rate": 0.23,
+        "doc_recall_at_k": 0.8962499999999999,
+        "evidence_text_recall_at_k": 0.43079761904761904,
+        "all_support_recall_at_k": 0.79,
+        "temporal_coverage_at_k": 0.8890833333333332,
+        "citation_support_rate": 0.9541666666666666,
+        "num_examples": 100,
+        "num_errors": 0
+      }
+    }
+  },
+  "per_agent": {
+    "TemporalEvidenceAgent": {
+      "base_correct_like_rate": 0.09,
+      "retention_correct_like_rate": 0.08,
+      "retention_delta_vs_base": -0.009999999999999995,
+      "new_correct_like_rate": 0.23,
+      "base_doc_recall_at_k": 0.8993333333333333,
+      "retention_doc_recall_at_k": 0.8993333333333333,
+      "new_doc_recall_at_k": 0.8962499999999999,
+      "base_num_errors": 0,
+      "retention_num_errors": 0,
+      "new_num_errors": 0
+    }
+  },
+  "finished_at": "2026-05-25T18:54:36"
+}

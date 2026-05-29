@@ -1,0 +1,82 @@
+/home/bian/projects/graph-rag-agent/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:65: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+
+=== ECT-QA LLM Judge Summary ===
+{
+  "agents": {
+    "TemporalEvidenceAgent": {
+      "em": 0.0,
+      "f1": 0.18115541797503976,
+      "precision": 0.12162835065729606,
+      "recall": 0.5991560794794828,
+      "rouge_l": 0.15981711880781674,
+      "buckets": {
+        "correct": 24,
+        "incorrect": 54,
+        "wrong_refusal": 22
+      },
+      "correct_like_rate": 0.24,
+      "doc_recall_at_k": 0.8569999999999999,
+      "evidence_text_recall_at_k": 0.433904761904762,
+      "all_support_recall_at_k": 0.75,
+      "temporal_coverage_at_k": 0.8748333333333334,
+      "citation_support_rate": 0.9227380952380951,
+      "llm_judge": {
+        "count": 100,
+        "labels": {
+          "correct": 22,
+          "incorrect": 75,
+          "refusal": 3
+        },
+        "correct_like_rate": 0.22,
+        "num_judge_errors": 0,
+        "answer_correctness": 0.42099999999999993,
+        "evidence_faithfulness": 0.5389999999999998,
+        "temporal_alignment": 0.9209999999999999,
+        "numerical_reasoning": 0.3899999999999999,
+        "answer_completeness": 0.48249999999999993,
+        "citation_validity": 0.384,
+        "refusal_quality": 0.03
+      },
+      "num_examples": 100,
+      "num_errors": 0
+    }
+  },
+  "overall": {
+    "em": 0.0,
+    "f1": 0.18115541797503976,
+    "precision": 0.12162835065729606,
+    "recall": 0.5991560794794828,
+    "rouge_l": 0.15981711880781674,
+    "buckets": {
+      "correct": 24,
+      "incorrect": 54,
+      "wrong_refusal": 22
+    },
+    "correct_like_rate": 0.24,
+    "doc_recall_at_k": 0.8569999999999999,
+    "evidence_text_recall_at_k": 0.433904761904762,
+    "all_support_recall_at_k": 0.75,
+    "temporal_coverage_at_k": 0.8748333333333334,
+    "citation_support_rate": 0.9227380952380951,
+    "llm_judge": {
+      "count": 100,
+      "labels": {
+        "correct": 22,
+        "incorrect": 75,
+        "refusal": 3
+      },
+      "correct_like_rate": 0.22,
+      "num_judge_errors": 0,
+      "answer_correctness": 0.42099999999999993,
+      "evidence_faithfulness": 0.5389999999999998,
+      "temporal_alignment": 0.9209999999999999,
+      "numerical_reasoning": 0.3899999999999999,
+      "answer_completeness": 0.48249999999999993,
+      "citation_validity": 0.384,
+      "refusal_quality": 0.03
+    },
+    "num_examples": 100,
+    "num_errors": 0
+  }
+}

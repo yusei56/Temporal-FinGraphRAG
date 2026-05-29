@@ -1,0 +1,272 @@
+{
+  "started_at": "2026-05-25T19:16:26",
+  "config": {
+    "scenario": "new",
+    "answer_filter": "answerable",
+    "limit": 100,
+    "offset": 0,
+    "agents": [
+      "TemporalEvidenceAgent"
+    ],
+    "corpus_scope": "full",
+    "metadata_filter": "boost",
+    "baseline_variant": "table_only"
+  },
+  "variant_order": [
+    "table_only",
+    "fact_sentences",
+    "pseudoq_table",
+    "fact_sentences_pseudoq"
+  ],
+  "variants": {
+    "table_only": {
+      "description": "Evidence table + compact evidence cards; fact sentences and pseudo questions disabled.",
+      "settings": {
+        "description": "Evidence table + compact evidence cards; fact sentences and pseudo questions disabled.",
+        "temporal_fact_sentences": false,
+        "temporal_pseudo_questions": 0
+      },
+      "dataset": {
+        "questions_loaded": 349,
+        "questions_selected": 100,
+        "documents_loaded": 480,
+        "chunks_indexed": 17437
+      },
+      "agents": {
+        "TemporalEvidenceAgent": {
+          "em": 0.0,
+          "f1": 0.17381375140996919,
+          "precision": 0.11534940547095575,
+          "recall": 0.5716929486007035,
+          "rouge_l": 0.15120244177494788,
+          "buckets": {
+            "correct": 24,
+            "incorrect": 57,
+            "wrong_refusal": 19
+          },
+          "correct_like_rate": 0.24,
+          "doc_recall_at_k": 0.8962499999999999,
+          "evidence_text_recall_at_k": 0.43079761904761904,
+          "all_support_recall_at_k": 0.79,
+          "temporal_coverage_at_k": 0.8890833333333332,
+          "citation_support_rate": 0.9552380952380953,
+          "num_examples": 100,
+          "num_errors": 0
+        }
+      },
+      "overall": {
+        "em": 0.0,
+        "f1": 0.17381375140996919,
+        "precision": 0.11534940547095575,
+        "recall": 0.5716929486007035,
+        "rouge_l": 0.15120244177494788,
+        "buckets": {
+          "correct": 24,
+          "incorrect": 57,
+          "wrong_refusal": 19
+        },
+        "correct_like_rate": 0.24,
+        "doc_recall_at_k": 0.8962499999999999,
+        "evidence_text_recall_at_k": 0.43079761904761904,
+        "all_support_recall_at_k": 0.79,
+        "temporal_coverage_at_k": 0.8890833333333332,
+        "citation_support_rate": 0.9552380952380953,
+        "num_examples": 100,
+        "num_errors": 0
+      }
+    },
+    "fact_sentences": {
+      "description": "Adds ToG-style fact sentences stitched to chunk excerpts.",
+      "settings": {
+        "description": "Adds ToG-style fact sentences stitched to chunk excerpts.",
+        "temporal_fact_sentences": true,
+        "temporal_pseudo_questions": 0
+      },
+      "dataset": {
+        "questions_loaded": 349,
+        "questions_selected": 100,
+        "documents_loaded": 480,
+        "chunks_indexed": 17437
+      },
+      "agents": {
+        "TemporalEvidenceAgent": {
+          "em": 0.0,
+          "f1": 0.1649488127937552,
+          "precision": 0.10769078163645218,
+          "recall": 0.5478570302063642,
+          "rouge_l": 0.14359717831630006,
+          "buckets": {
+            "correct": 21,
+            "incorrect": 62,
+            "wrong_refusal": 17
+          },
+          "correct_like_rate": 0.21,
+          "doc_recall_at_k": 0.8962499999999999,
+          "evidence_text_recall_at_k": 0.43079761904761904,
+          "all_support_recall_at_k": 0.79,
+          "temporal_coverage_at_k": 0.8890833333333332,
+          "citation_support_rate": 0.9575,
+          "num_examples": 100,
+          "num_errors": 0
+        }
+      },
+      "overall": {
+        "em": 0.0,
+        "f1": 0.1649488127937552,
+        "precision": 0.10769078163645218,
+        "recall": 0.5478570302063642,
+        "rouge_l": 0.14359717831630006,
+        "buckets": {
+          "correct": 21,
+          "incorrect": 62,
+          "wrong_refusal": 17
+        },
+        "correct_like_rate": 0.21,
+        "doc_recall_at_k": 0.8962499999999999,
+        "evidence_text_recall_at_k": 0.43079761904761904,
+        "all_support_recall_at_k": 0.79,
+        "temporal_coverage_at_k": 0.8890833333333332,
+        "citation_support_rate": 0.9575,
+        "num_examples": 100,
+        "num_errors": 0
+      }
+    },
+    "pseudoq_table": {
+      "description": "Adds HopRAG-style pseudo-question recall without fact sentences.",
+      "settings": {
+        "description": "Adds HopRAG-style pseudo-question recall without fact sentences.",
+        "temporal_fact_sentences": false,
+        "temporal_pseudo_questions": 8
+      },
+      "dataset": {
+        "questions_loaded": 349,
+        "questions_selected": 100,
+        "documents_loaded": 480,
+        "chunks_indexed": 17437
+      },
+      "agents": {
+        "TemporalEvidenceAgent": {
+          "em": 0.0,
+          "f1": 0.1753480632150658,
+          "precision": 0.1155416760709765,
+          "recall": 0.5785590306930534,
+          "rouge_l": 0.15369283116536195,
+          "buckets": {
+            "correct": 24,
+            "incorrect": 56,
+            "wrong_refusal": 20
+          },
+          "correct_like_rate": 0.24,
+          "doc_recall_at_k": 0.8895833333333333,
+          "evidence_text_recall_at_k": 0.41704761904761894,
+          "all_support_recall_at_k": 0.77,
+          "temporal_coverage_at_k": 0.8824166666666666,
+          "citation_support_rate": 0.9414880952380953,
+          "num_examples": 100,
+          "num_errors": 0
+        }
+      },
+      "overall": {
+        "em": 0.0,
+        "f1": 0.1753480632150658,
+        "precision": 0.1155416760709765,
+        "recall": 0.5785590306930534,
+        "rouge_l": 0.15369283116536195,
+        "buckets": {
+          "correct": 24,
+          "incorrect": 56,
+          "wrong_refusal": 20
+        },
+        "correct_like_rate": 0.24,
+        "doc_recall_at_k": 0.8895833333333333,
+        "evidence_text_recall_at_k": 0.41704761904761894,
+        "all_support_recall_at_k": 0.77,
+        "temporal_coverage_at_k": 0.8824166666666666,
+        "citation_support_rate": 0.9414880952380953,
+        "num_examples": 100,
+        "num_errors": 0
+      }
+    },
+    "fact_sentences_pseudoq": {
+      "description": "Combines fact sentences with pseudo-question supplementary recall.",
+      "settings": {
+        "description": "Combines fact sentences with pseudo-question supplementary recall.",
+        "temporal_fact_sentences": true,
+        "temporal_pseudo_questions": 8
+      },
+      "dataset": {
+        "questions_loaded": 349,
+        "questions_selected": 100,
+        "documents_loaded": 480,
+        "chunks_indexed": 17437
+      },
+      "agents": {
+        "TemporalEvidenceAgent": {
+          "em": 0.0,
+          "f1": 0.1695370778659405,
+          "precision": 0.11145548762728373,
+          "recall": 0.5709457347726435,
+          "rouge_l": 0.14798695080807547,
+          "buckets": {
+            "correct": 23,
+            "incorrect": 58,
+            "wrong_refusal": 19
+          },
+          "correct_like_rate": 0.23,
+          "doc_recall_at_k": 0.8895833333333333,
+          "evidence_text_recall_at_k": 0.41704761904761894,
+          "all_support_recall_at_k": 0.77,
+          "temporal_coverage_at_k": 0.8824166666666666,
+          "citation_support_rate": 0.9408333333333333,
+          "num_examples": 100,
+          "num_errors": 0
+        }
+      },
+      "overall": {
+        "em": 0.0,
+        "f1": 0.1695370778659405,
+        "precision": 0.11145548762728373,
+        "recall": 0.5709457347726435,
+        "rouge_l": 0.14798695080807547,
+        "buckets": {
+          "correct": 23,
+          "incorrect": 58,
+          "wrong_refusal": 19
+        },
+        "correct_like_rate": 0.23,
+        "doc_recall_at_k": 0.8895833333333333,
+        "evidence_text_recall_at_k": 0.41704761904761894,
+        "all_support_recall_at_k": 0.77,
+        "temporal_coverage_at_k": 0.8824166666666666,
+        "citation_support_rate": 0.9408333333333333,
+        "num_examples": 100,
+        "num_errors": 0
+      }
+    }
+  },
+  "deltas_vs_baseline": {
+    "TemporalEvidenceAgent": {
+      "table_only": {
+        "correct_like_delta": 0.0,
+        "doc_recall_delta": 0.0,
+        "temporal_coverage_delta": 0.0
+      },
+      "fact_sentences": {
+        "correct_like_delta": -0.03,
+        "doc_recall_delta": 0.0,
+        "temporal_coverage_delta": 0.0
+      },
+      "pseudoq_table": {
+        "correct_like_delta": 0.0,
+        "doc_recall_delta": -0.006666666666666599,
+        "temporal_coverage_delta": -0.006666666666666599
+      },
+      "fact_sentences_pseudoq": {
+        "correct_like_delta": -0.009999999999999981,
+        "doc_recall_delta": -0.006666666666666599,
+        "temporal_coverage_delta": -0.006666666666666599
+      }
+    }
+  },
+  "finished_at": "2026-05-25T19:16:26"
+}

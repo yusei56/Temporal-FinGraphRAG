@@ -1,0 +1,65 @@
+# Secrets and local config
+.env
+.env.*
+!.env.example
+
+# Python/runtime caches
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# Local environments
+.venv/
+.venv312/
+.py310/
+venv/
+env/
+
+# Local tools and editor state
+.vscode/
+.understand-anything/
+
+# Generated caches and local data
+cache/
+lib/
+data/
+datasets/ect_qa/
+documents/
+outputs/
+file_registry.json
+hotpot_dev_distractor_v1.json
+
+# Legacy evaluation output directories
+evaluation_results/
+evaluation_results_with_golden/
+evaluation_results_no_golden/
+
+# Large or process-level evaluation artifacts.
+# Keep docs/*.md, docs/*summary*.json, and the curated
+# docs/regression_wp3_limit100_20260526/ headline artifacts.
+docs/llm_judge_runs/
+docs/ablation_runs/
+docs/incremental_runs/
+docs/temporal_agent_runs/
+docs/regression_cleanup_*/
+docs/regression_p2_*/
+docs/regression_wp1_*/
+docs/regression_wp3_20260526/
+docs/*smoke*.json
+docs/review_smoke_*.json
+docs/ectqa_eval_*.json
+docs/ectqa_eval_*.log
+docs/ectqa_llm_judge_*.log
+docs/ectqa_eval_limit100_suite*.log
+docs/original_baseline_llm_judge_*/original_*_judged.json
+
+# Old demo corpus formats should stay out of this financial-only repo.
+files/*.pdf
+files/*.doc
+files/*.docx
+files/*.txt

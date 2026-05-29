@@ -1,0 +1,56 @@
+/home/bian/projects/graph-rag-agent/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:65: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+
+=== ECT-QA Eval Summary ===
+{
+  "dataset": {
+    "questions_loaded": 349,
+    "questions_selected": 100,
+    "documents_loaded": 480,
+    "chunks_indexed": 17437
+  },
+  "agents": {
+    "TemporalEvidenceAgent": {
+      "em": 0.0,
+      "f1": 0.1749894053796292,
+      "precision": 0.11463544857656131,
+      "recall": 0.5788215568116215,
+      "rouge_l": 0.1530935446519398,
+      "buckets": {
+        "correct": 23,
+        "incorrect": 60,
+        "wrong_refusal": 17
+      },
+      "correct_like_rate": 0.23,
+      "doc_recall_at_k": 0.8962499999999999,
+      "evidence_text_recall_at_k": 0.43079761904761904,
+      "all_support_recall_at_k": 0.79,
+      "temporal_coverage_at_k": 0.8890833333333332,
+      "citation_support_rate": 0.9427380952380954,
+      "num_examples": 100,
+      "num_errors": 0
+    }
+  },
+  "overall": {
+    "em": 0.0,
+    "f1": 0.1749894053796292,
+    "precision": 0.11463544857656131,
+    "recall": 0.5788215568116215,
+    "rouge_l": 0.1530935446519398,
+    "buckets": {
+      "correct": 23,
+      "incorrect": 60,
+      "wrong_refusal": 17
+    },
+    "correct_like_rate": 0.23,
+    "doc_recall_at_k": 0.8962499999999999,
+    "evidence_text_recall_at_k": 0.43079761904761904,
+    "all_support_recall_at_k": 0.79,
+    "temporal_coverage_at_k": 0.8890833333333332,
+    "citation_support_rate": 0.9427380952380954,
+    "num_examples": 100,
+    "num_errors": 0
+  }
+}
+
+Saved result JSON to: /home/bian/projects/graph-rag-agent/docs/regression_wp3_limit100_20260526/table_only_limit100_tfidf.json

@@ -1,0 +1,188 @@
+{
+  "started_at": "2026-05-24T22:59:52",
+  "protocol": [
+    {
+      "name": "base_old_questions_old_corpus",
+      "scenario": "base",
+      "description": "Old questions over old corpus; measures original/base ability."
+    },
+    {
+      "name": "retention_old_questions_updated_corpus",
+      "scenario": "updated",
+      "description": "Old questions over old+new corpus; measures stability after corpus update."
+    },
+    {
+      "name": "new_questions_updated_corpus",
+      "scenario": "new",
+      "description": "New questions over old+new corpus; measures acquisition of new information."
+    }
+  ],
+  "config": {
+    "limit": 5,
+    "offset": 0,
+    "answer_filter": "answerable",
+    "agents": [
+      "TemporalEvidenceAgent"
+    ],
+    "corpus_scope": "full",
+    "metadata_filter": "boost",
+    "temporal_pseudo_questions": 0
+  },
+  "runs": {
+    "base_old_questions_old_corpus": {
+      "dataset": {
+        "questions_loaded": 656,
+        "questions_selected": 5,
+        "documents_loaded": 384,
+        "chunks_indexed": 14047
+      },
+      "agents": {
+        "TemporalEvidenceAgent": {
+          "em": 0.0,
+          "f1": 0.21922894290559639,
+          "precision": 0.1412857142857143,
+          "recall": 0.5138461538461538,
+          "rouge_l": 0.17852798191068403,
+          "buckets": {
+            "incorrect": 4,
+            "wrong_refusal": 1
+          },
+          "correct_like_rate": 0.0,
+          "doc_recall_at_k": 0.8666666666666666,
+          "evidence_text_recall_at_k": 0.5,
+          "all_support_recall_at_k": 0.8,
+          "temporal_coverage_at_k": 0.8666666666666666,
+          "citation_support_rate": 0.8,
+          "num_examples": 5,
+          "num_errors": 0
+        }
+      },
+      "overall": {
+        "em": 0.0,
+        "f1": 0.21922894290559639,
+        "precision": 0.1412857142857143,
+        "recall": 0.5138461538461538,
+        "rouge_l": 0.17852798191068403,
+        "buckets": {
+          "incorrect": 4,
+          "wrong_refusal": 1
+        },
+        "correct_like_rate": 0.0,
+        "doc_recall_at_k": 0.8666666666666666,
+        "evidence_text_recall_at_k": 0.5,
+        "all_support_recall_at_k": 0.8,
+        "temporal_coverage_at_k": 0.8666666666666666,
+        "citation_support_rate": 0.8,
+        "num_examples": 5,
+        "num_errors": 0
+      }
+    },
+    "retention_old_questions_updated_corpus": {
+      "dataset": {
+        "questions_loaded": 656,
+        "questions_selected": 5,
+        "documents_loaded": 480,
+        "chunks_indexed": 17437
+      },
+      "agents": {
+        "TemporalEvidenceAgent": {
+          "em": 0.0,
+          "f1": 0.23864907082923886,
+          "precision": 0.15573455188527024,
+          "recall": 0.5388461538461538,
+          "rouge_l": 0.19170802522300973,
+          "buckets": {
+            "incorrect": 5
+          },
+          "correct_like_rate": 0.0,
+          "doc_recall_at_k": 0.8666666666666666,
+          "evidence_text_recall_at_k": 0.5,
+          "all_support_recall_at_k": 0.8,
+          "temporal_coverage_at_k": 0.8666666666666666,
+          "citation_support_rate": 0.8,
+          "num_examples": 5,
+          "num_errors": 0
+        }
+      },
+      "overall": {
+        "em": 0.0,
+        "f1": 0.23864907082923886,
+        "precision": 0.15573455188527024,
+        "recall": 0.5388461538461538,
+        "rouge_l": 0.19170802522300973,
+        "buckets": {
+          "incorrect": 5
+        },
+        "correct_like_rate": 0.0,
+        "doc_recall_at_k": 0.8666666666666666,
+        "evidence_text_recall_at_k": 0.5,
+        "all_support_recall_at_k": 0.8,
+        "temporal_coverage_at_k": 0.8666666666666666,
+        "citation_support_rate": 0.8,
+        "num_examples": 5,
+        "num_errors": 0
+      }
+    },
+    "new_questions_updated_corpus": {
+      "dataset": {
+        "questions_loaded": 349,
+        "questions_selected": 5,
+        "documents_loaded": 480,
+        "chunks_indexed": 17437
+      },
+      "agents": {
+        "TemporalEvidenceAgent": {
+          "em": 0.0,
+          "f1": 0.1373567977915804,
+          "precision": 0.0741566326928844,
+          "recall": 1.0,
+          "rouge_l": 0.1373567977915804,
+          "buckets": {
+            "correct": 5
+          },
+          "correct_like_rate": 1.0,
+          "doc_recall_at_k": 1.0,
+          "evidence_text_recall_at_k": 0.25,
+          "all_support_recall_at_k": 1.0,
+          "temporal_coverage_at_k": 1.0,
+          "citation_support_rate": 1.0,
+          "num_examples": 5,
+          "num_errors": 0
+        }
+      },
+      "overall": {
+        "em": 0.0,
+        "f1": 0.1373567977915804,
+        "precision": 0.0741566326928844,
+        "recall": 1.0,
+        "rouge_l": 0.1373567977915804,
+        "buckets": {
+          "correct": 5
+        },
+        "correct_like_rate": 1.0,
+        "doc_recall_at_k": 1.0,
+        "evidence_text_recall_at_k": 0.25,
+        "all_support_recall_at_k": 1.0,
+        "temporal_coverage_at_k": 1.0,
+        "citation_support_rate": 1.0,
+        "num_examples": 5,
+        "num_errors": 0
+      }
+    }
+  },
+  "per_agent": {
+    "TemporalEvidenceAgent": {
+      "base_correct_like_rate": 0.0,
+      "retention_correct_like_rate": 0.0,
+      "retention_delta_vs_base": 0.0,
+      "new_correct_like_rate": 1.0,
+      "base_doc_recall_at_k": 0.8666666666666666,
+      "retention_doc_recall_at_k": 0.8666666666666666,
+      "new_doc_recall_at_k": 1.0,
+      "base_num_errors": 0,
+      "retention_num_errors": 0,
+      "new_num_errors": 0
+    }
+  },
+  "finished_at": "2026-05-24T22:59:52"
+}

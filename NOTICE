@@ -1,0 +1,21 @@
+TempoRAG-Fin Notice
+===================
+
+This project is built on top of the open-source `graph-rag-agent` project:
+
+    https://github.com/1517005260/graph-rag-agent
+
+The upstream project is licensed under the MIT License and carries:
+
+    Copyright (c) 2025 GLK
+
+The upstream MIT license is retained in `LICENSE`.
+
+The financial temporal RAG track in this repository is a derived research
+prototype. The added contribution includes the financial temporal graph schema,
+FinFact extraction and retrieval modules, ECT-QA evaluation scripts, LLM judge
+workflow, regression/ablation summaries, and project documentation.
+
+External datasets, model providers, and APIs used when running this project may
+have their own terms. In particular, ECT-QA data should be obtained from its
+official source, and API credentials must be supplied locally through `.env`.
