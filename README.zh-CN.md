@@ -144,10 +144,6 @@ PYTHONPATH=. python test/test_metric_extractors.py
 docs/regression_wp3_limit100_20260526/
 ```
 
-## 当前状态
-
-这是一个研究与评估导向的金融时序 GraphRAG 项目。为了突出核心贡献，仓库已经移除了原项目中的通用 Agent、FastAPI、Streamlit 前端、学校 demo 数据和本地虚拟环境，只保留金融时序 RAG 主线、评估脚本、关键结果和文档。
-
 ## License
 
 本项目保留上游 MIT License。详细归属说明见 `LICENSE` 和 `NOTICE`。

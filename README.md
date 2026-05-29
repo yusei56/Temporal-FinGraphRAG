@@ -130,13 +130,6 @@ JSON outputs from smoke runs, ablations, incremental sweeps, and LLM judge
 backfills are intentionally excluded from git; the summarized numbers are
 preserved in [docs/RESULTS.md](docs/RESULTS.md).
 
-## Status
-
-TempoRAG-Fin is currently a research/evaluation project. FastAPI, Streamlit,
-and the original generic GraphRAG agents were removed from this slim copy so the
-repository focuses on ECT-QA data loading, Fin* graph construction, temporal
-retrieval, answer generation, and evaluation.
-
 ## License
 
 This project retains the upstream MIT License. See [LICENSE](LICENSE) and
