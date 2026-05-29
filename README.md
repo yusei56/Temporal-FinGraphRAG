@@ -96,7 +96,18 @@ period/metric-specific evidence ordering, which improves answer quality.
 | --- | --- |
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | System architecture, Fin* graph schema, data flow, and run commands. |
 | [docs/RESULTS.md](docs/RESULTS.md) | Main result tables, ablations, incremental evaluation, and caveats. |
+| [docs/ABLATION_AND_NEGATIVE_RESULTS.md](docs/ABLATION_AND_NEGATIVE_RESULTS.md) | Experiments that were tried, measured, and not promoted to the default path. |
 | [NOTICE](NOTICE) | Upstream attribution and third-party provenance. |
+
+## Future Work
+
+- Dual-judge validation: rerun the headline `limit=100` graph-vs-TF-IDF result
+  with a second judge model from a different model family, then report agreement
+  rate and averaged-score bootstrap confidence intervals.
+- Robustness stress test: add an S1/S2/S3 comparison with graph-linked evidence,
+  TF-IDF evidence, and TF-IDF evidence mixed with same-company or same-metric
+  distractor chunks. This is planned as a stress test, not as a claim that the
+  project reproduces any single paper's protocol exactly.
 
 ## Quick Start
 

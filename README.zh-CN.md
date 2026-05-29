@@ -139,8 +139,14 @@ PYTHONPATH=. python test/test_metric_extractors.py
 | --- | --- |
 | `docs/ARCHITECTURE.md` | 系统架构、图谱 schema、数据流和运行命令。 |
 | `docs/RESULTS.md` | 主实验结果、消融实验、增量评估和 caveats。 |
+| `docs/ABLATION_AND_NEGATIVE_RESULTS.md` | 已尝试但没有进入默认路径的实验、结果和原因。 |
 | `docs/formal_eval_report_20260525.md` | 正式评估报告。 |
 | `NOTICE` | 上游项目来源和许可证说明。 |
+
+## 后续工作
+
+- 双裁判验证：对 headline 的 `limit=100` graph-vs-TF-IDF 结果使用另一个模型家族的 LLM judge 复评，报告双裁判一致率和平均分后的 bootstrap 置信区间。
+- 鲁棒性压力测试：补充 S1/S2/S3 对照，即 graph-linked evidence、TF-IDF evidence、以及混入同公司/同指标干扰 chunk 的 TF-IDF evidence。这里会定位为本项目的抗噪实验，而不是声称完整复现某篇论文协议。
 
 ## 评估产物说明
 
