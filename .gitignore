@@ -50,6 +50,7 @@ docs/regression_cleanup_*/
 docs/regression_p2_*/
 docs/regression_wp1_*/
 docs/regression_wp3_20260526/
+docs/dev_log.md
 docs/*smoke*.json
 docs/review_smoke_*.json
 docs/ectqa_eval_*.json

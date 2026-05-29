@@ -131,13 +131,12 @@ PYTHONPATH=. python test/test_metric_extractors.py
 | --- | --- |
 | `docs/ARCHITECTURE.md` | 系统架构、图谱 schema、数据流和运行命令。 |
 | `docs/RESULTS.md` | 主实验结果、消融实验、增量评估和 caveats。 |
-| `docs/dev_log.md` | 阶段性开发日志和实验追踪。 |
 | `docs/formal_eval_report_20260525.md` | 正式评估报告。 |
 | `NOTICE` | 上游项目来源和许可证说明。 |
 
 ## 评估产物说明
 
-仓库中保留了压缩后的核心报告和关键结果文件。大规模过程性 JSON、临时 smoke 输出、完整 LLM Judge backfill 等文件没有放入 GitHub，相关数字已经固化在 `docs/RESULTS.md` 和 `docs/dev_log.md` 中。
+仓库中保留了压缩后的核心报告和关键结果文件。大规模过程性 JSON、临时 smoke 输出、完整 LLM Judge backfill 等文件没有放入 GitHub，相关数字已经固化在 `docs/RESULTS.md` 中。
 
 当前保留的 headline artifact 位于：
 

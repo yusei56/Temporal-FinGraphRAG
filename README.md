@@ -69,7 +69,6 @@ period/metric-specific evidence ordering, which improves answer quality.
 | --- | --- |
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | System architecture, Fin* graph schema, data flow, and run commands. |
 | [docs/RESULTS.md](docs/RESULTS.md) | Main result tables, ablations, incremental evaluation, and caveats. |
-| [docs/dev_log.md](docs/dev_log.md) | Per-phase development log and experiment history. |
 | [NOTICE](NOTICE) | Upstream attribution and third-party provenance. |
 
 ## Quick Start
@@ -129,8 +128,7 @@ The repository keeps compact reports and the main graph-vs-TF-IDF evidence
 artifacts under `docs/regression_wp3_limit100_20260526/`. Large process-level
 JSON outputs from smoke runs, ablations, incremental sweeps, and LLM judge
 backfills are intentionally excluded from git; the summarized numbers are
-preserved in [docs/RESULTS.md](docs/RESULTS.md) and
-[docs/dev_log.md](docs/dev_log.md).
+preserved in [docs/RESULTS.md](docs/RESULTS.md).
 
 ## Status
 

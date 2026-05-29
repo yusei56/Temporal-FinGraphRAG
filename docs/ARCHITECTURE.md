@@ -3,7 +3,8 @@
 TempoRAG-Fin is a slim financial temporal GraphRAG research/evaluation project.
 It keeps the ECT-QA data path, Fin* graph construction, temporal retrieval, and
 evaluation scripts. The original generic GraphRAG agents, API server, and
-frontend were removed from this copy; baseline artifacts remain in `docs/`.
+frontend were removed from this copy. Curated evaluation summaries and headline
+artifacts remain in `docs/`; ad-hoc run outputs should be written to `outputs/`.
 
 ## Repository Scope
 
@@ -136,7 +137,7 @@ PYTHONPATH=. python scripts/ectqa_eval.py \
   --agents TemporalEvidenceAgent \
   --metadata-filter boost \
   --retriever graph \
-  --output-json docs/smoke_graph.json \
+  --output-json outputs/smoke_graph.json \
   --quiet
 ```
 
@@ -148,8 +149,8 @@ PYTHONPATH=. python scripts/ectqa_incremental_eval.py \
   --agents TemporalEvidenceAgent \
   --retriever graph \
   --metadata-filter boost \
-  --output-dir docs/incremental_runs/graph_smoke \
-  --summary-json docs/ectqa_incremental_graph_smoke.json \
+  --output-dir outputs/incremental_runs/graph_smoke \
+  --summary-json outputs/ectqa_incremental_graph_smoke.json \
   --quiet
 ```
 
@@ -163,8 +164,8 @@ PYTHONPATH=. python scripts/ectqa_ablation_matrix.py \
   --agents TemporalEvidenceAgent \
   --retriever graph \
   --metadata-filter boost \
-  --output-dir docs/ablation_runs/graph_smoke \
-  --summary-json docs/ectqa_ablation_graph_smoke.json \
+  --output-dir outputs/ablation_runs/graph_smoke \
+  --summary-json outputs/ectqa_ablation_graph_smoke.json \
   --quiet
 ```
 
